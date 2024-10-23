@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Be My Valentine?</title>
+  <style>
+    body {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-image: url('https://stickerly.pstatic.net/sticker_pack/dTm9ezCVJNOASKo6AZYIBg/D3VRHT/19/dd506705-e2c4-4f6a-bd26-fe44b9bdcb31.png'); /* Initial background image */
+      background-size: cover;
+      background-position: center;
+      font-family: 'Comic Sans MS', cursive, sans-serif;
+      margin: 0;
+      text-align: center;
+      color: white; /* Text color for visibility */
+    }
+
+    h1 {
+      font-size: 3em;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+    }
+
+    button {
+      background-color: #ff69b4;
+      border: none;
+      color: white;
+      padding: 15px 30px;
+      font-size: 1.2em;
+      cursor: pointer;
+      border-radius: 5px;
+      margin: 10px;
+      transition: background-color 0.3s;
+    }
+
+    button:hover {
+      background-color: #ff1493;
+    }
+
+    .message {
+      margin-top: 20px;
+      font-size: 1.5em;
+      color: #ff4500;
+      text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+    }
+
+    .cat-image {
+      margin-top: 20px;
+      width: 200px; /* Adjust size as needed */
+    }
+
+    .dancing-cat {
+      display: none; /* Initially hide the dancing cat GIF */
+      margin-top: 20px;
+      width: 200px; /* Adjust size as needed */
+    }
+
+    .hidden {
+      display: none; /* Class to hide elements */
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Will You Be My Partner?</h1>
+  <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ3sdt3TFFL4_80lERV4LxDWIkHqZyYKsXTnA&s" alt="Cat holding a rose" class="cat-image" id="catImage">
+  <img src="https://media.tenor.com/iqkCE5ShBpwAAAAi/cat-dance.gif" alt="Happy dancing cat" class="dancing-cat" id="dancingCat"> <!-- Dancing cat GIF -->
+
+  <button onclick="answer('yes')">Yes</button>
+  <button onclick="answer('no')">No</button>
+
+  <div class="message" id="message"></div>
+
+  <script>
+    function answer(response) {
+      const messageDiv = document.getElementById("message");
+      const catImage = document.getElementById("catImage");
+      const dancingCat = document.getElementById("dancingCat");
+      
+      if (response === 'yes') {
+        document.body.style.backgroundImage = "url('https://media.makeameme.org/created/i-feel-so-whnkwh.jpg')"; // Change background to the dancing cat GIF
+        messageDiv.innerHTML = "kiss me mofo ;) ❤";
+        messageDiv.style.color = "#32cd32"; // Change color for positive response
+        catImage.classList.add('hidden'); // Hide the cat image after yes
+        dancingCat.style.display = "block"; // Show the dancing cat GIF
+        // Hide both buttons after clicking "Yes"
+        document.querySelector('button:nth-of-type(1)').classList.add('hidden'); // Hide the Yes button
+        document.querySelector('button:nth-of-type(2)').classList.add('hidden'); // Hide the No button
+      } else {
+        // Show new images and hide buttons
+        catImage.src = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQi-s7woPPP9yyXWvd_vZ3DvO1EgieleAwnKQ&s"; // New image after "No"
+        messageDiv.innerHTML = "That's the wrong answer!!! •̀ω•́  Try again.";
+        messageDiv.style.color = "#ff4500"; // Keep it red for wrong answer
+        
+        // Remove the "No" button and show only the "Yes" button
+        const noButton = document.querySelector('button:nth-of-type(2)');
+        noButton.classList.add('hidden'); // Hide the No button
+      }
+    }
+  </script>
+
+</body>
+</html>
